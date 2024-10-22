@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cauldown Timer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="timer-container">
+        <h1>Odštevalnik Časa</h1>
+        <div id="timer-display">00:00:00</div> <!-- Prikaz časa -->
+        
+        <!-- Polja za vnos ur, minut in sekund -->
+        <div class="controls">
+            <input type="number" id="hours" placeholder="Ure">
+            <input type="number" id="minutes" placeholder="Minute">
+            <input type="number" id="seconds" placeholder="Sekunde">
+        </div>
+        
+        <!-- Gumba za začetek in ponastavitev -->
+        <button id="start">Začni</button>
+        <button id="reset">Ponastavi</button>
+    </div>
+
+    <!-- Vključimo datoteko s skriptom -->
+    <script src="script.js"></script>
+</body>
+</html>

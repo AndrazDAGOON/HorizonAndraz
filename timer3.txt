@@ -1,0 +1,43 @@
+let timer;
+let totalSeconds = 0;
+
+document.getElementById('start').addEventListener('click', () => {
+    // Dobimo vrednosti iz polj za ure, minute in sekunde
+    const hours = parseInt(document.getElementById('hours').value) || 0;
+    const minutes = parseInt(document.getElementById('minutes').value) || 0;
+    const seconds = parseInt(document.getElementById('seconds').value) || 0;
+
+    // Izračunamo skupno število sekund
+    totalSeconds = hours * 3600 + minutes * 60 + seconds;
+
+    // Če imamo čas za odštevanje, začnemo odštevalnik
+    if (totalSeconds > 0) {
+        startTimer();
+    }
+});
+
+document.getElementById('reset').addEventListener('click', () => {
+    clearInterval(timer);
+    document.getElementById('timer-display').textContent = "00:00:00";
+});
+
+function startTimer() {
+    timer = setInterval(() => {
+        if (totalSeconds <= 0) {
+            clearInterval(timer);
+            alert("Čas je potekel!");
+        } else {
+            totalSeconds--;
+            updateDisplay();
+        }
+    }, 1000);
+}
+
+function updateDisplay() {
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    document.getElementById('timer-display').textContent = 
+        `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
